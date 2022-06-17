@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Login from './pages/Login';
@@ -7,7 +7,7 @@ import PreAssignmentGuide from './pages/PreAssignmentGuide';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const storeUserLoggedIn = localStorage.getItem('isLoggedIn');
     if (storeUserLoggedIn === '1') {
@@ -23,6 +23,7 @@ function App() {
   const logoutHandler = () => {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
+    navigate('/');
   };
   return (
     <>

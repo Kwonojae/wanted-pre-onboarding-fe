@@ -1,18 +1,23 @@
 import React from 'react';
+import classes from '../styles/Navigation.module.css';
 
 const Navigation = (props) => {
   return (
-    <nav>
-      <h1>네비게이션 컴포넌트</h1>
+    <nav className={classes.nav}>
       <ul>
         {props.isLoggedIn && (
           <li>
-            <a href="/">Users</a>
+            <input placeholder="검색" type="text" />
           </li>
         )}
         {props.isLoggedIn && (
           <li>
-            <a href="/">Admin</a>
+            <a href="/home">Users</a>
+          </li>
+        )}
+        {props.isLoggedIn && (
+          <li>
+            <a href="/home">Admin</a>
           </li>
         )}
         {props.isLoggedIn && (

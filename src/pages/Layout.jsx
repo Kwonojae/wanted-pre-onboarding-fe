@@ -1,15 +1,18 @@
 import React from 'react';
 import Navigation from './Navigation';
+import classes from '../styles/Layout.module.css';
 
 const Layout = (props) => {
   return (
-    <header>
-      <h1>레이아웃 컴포넌트</h1>
-      <Navigation
-        isLoggedIn={props.isAuthenticated}
-        onLogout={props.onLogout}
-      />
-    </header>
+    <>
+      <header className={classes['main-header']}>
+        <h1>Instagram</h1>
+        <Navigation
+          isLoggedIn={props.isAuthenticated}
+          onLogout={props.onLogout}
+        />
+      </header>
+    </>
   );
 };
 

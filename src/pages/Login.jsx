@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import classes from '../styles/Login.module.css';
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -7,19 +8,20 @@ const Login = (props) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  const navigate = useNavigate();
+
+  const emailRegex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z](.[a-z{2,8}])?/g;
+  const pwdRegex =
+    /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/g;
+  //최소8자 하나 이상의 문자 하나의 숫자 및 하나의 특수문자
 
   useEffect(() => {
-    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z](.[a-z{2,8}])?/g;
-    const pwdRegex =
-      /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/g;
-    //최소8자 하나 이상의 문자 하나의 숫자 및 하나의 특수문자
-
     const identifier = setTimeout(() => {
       setFormIsValid(
         emailRegex.test(enteredEmail) && pwdRegex.test(enteredPassword)
       );
       console.log('Checking form validity!');
-    }, 2000);
+    }, 500);
     return () => {
       console.log('CLEANUP');
       clearTimeout(identifier);
@@ -35,39 +37,50 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes('@'));
+    setEmailIsValid(emailRegex.test(enteredEmail));
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setPasswordIsValid(pwdRegex.test(enteredPassword));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
     props.onLogin(enteredEmail, enteredPassword);
+    navigate('/home');
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
+    <form className={classes.login} onSubmit={submitHandler}>
+      <div
+        className={`${classes.control} ${
+          emailIsValid === false ? classes.invalid : ''
+        }`}
+      >
         <label htmlFor="email">E-Mail</label>
         <input
           type="email"
           id="email"
           value={enteredEmail}
           onChange={emailChangeHandler}
+          onBlur={validateEmailHandler}
         />
       </div>
-      <div>
+      <div
+        className={`${classes.control} ${
+          passwordIsValid === false ? classes.invalid : ''
+        }`}
+      >
         <label htmlFor="password">password</label>
         <input
           type="password"
           id="password"
           value={enteredPassword}
           onChange={passwordChangeHandler}
+          onBlur={validatePasswordHandler}
         />
       </div>
-      <div>
+      <div className={`${classes.control}`}>
         <button type="submit" disabled={!formIsValid}>
           Login
         </button>
