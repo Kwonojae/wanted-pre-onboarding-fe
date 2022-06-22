@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "userName": "wecode",
+    "userImg": "img/food8.jpg",
+    "feedImg": "img/image_04.jpg",
+    "feedContent": "그리고 그리고 그래서 어쩔 티비",
+    "comment": [
+      {
+        "id": 1,
+        "userName": "오재",
+        "content": "음식이 맛있어 보여요 ",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "갤럭시",
+        "content": "정말이네요 ",
+        "isLiked": true
+      },
+      {
+        "id": 3,
+        "userName": "아이폰",
+        "content": "저도 가보고싶어요",
+        "isLiked": true
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userName": "ojea",
+    "userImg": "img/food8.jpg",
+    "feedImg": "img/image_04.jpg",
+    "feedContent": "그리고 그리고 그래서 어쩔 티비",
+    "comment": [
+      {
+        "id": 1,
+        "userName": "오재",
+        "content": "고기다",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "갤럭시",
+        "content": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ ",
+        "isLiked": true
+      },
+      {
+        "id": 3,
+        "userName": "아이폰",
+        "content": "우아",
+        "isLiked": true
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "userName": "react",
+    "userImg": "img/thumb_06.jpg",
+    "feedImg": "img/image_04.jpg",
+    "feedContent": "그리고 그리고 그래서 어쩔 티비",
+    "comment": [
+      {
+        "id": 1,
+        "userName": "오재",
+        "content": "고양이네 ",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "갤럭시",
+        "content": "잘자네 ",
+        "isLiked": true
+      },
+      {
+        "id": 3,
+        "userName": "아이폰",
+        "content": "젤리다",
+        "isLiked": true
+      }
+    ]
+  }
+]

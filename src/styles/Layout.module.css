@@ -10,6 +10,7 @@
   background: white;
   padding: 0 2rem;
   border-bottom: 2px solid #ccc;
+  z-index: 3;
 }
 
 .main-header h1 {
